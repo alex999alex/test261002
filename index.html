@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>document.documentElement.classList.add("js");</script>
+    <meta
+      name="description"
+      content="Huilin is a luxury house of black, ivory, and a single note of gold. Autumn / Winter 2026."
+    />
+    <meta name="theme-color" content="#111111" />
+    <title>Huilin — Maison</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Outfit:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="preload"
+      as="image"
+      href="https://images.unsplash.com/photo-1779398970581-72bc4e741c81?auto=format&fit=crop&w=2000&q=80"
+    />
+  </head>
+  <body id="top">
+    <a class="skip" href="#collection">Skip to collection</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand" href="#top">Huilin</a>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="#collection">Collection</a>
+        <a href="#maison">Maison</a>
+        <a href="#lookbook">Lookbook</a>
+        <a href="#newsletter">Correspondence</a>
+      </nav>
+      <button
+        class="nav__toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+        data-nav-toggle
+      >
+        <span class="nav__toggle-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Menu</span>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Introduction">
+        <div class="hero__media">
+          <img
+            src="https://images.unsplash.com/photo-1779398970581-72bc4e741c81?auto=format&fit=crop&w=2000&q=80"
+            srcset="
+              https://images.unsplash.com/photo-1779398970581-72bc4e741c81?auto=format&fit=crop&w=800&q=70   800w,
+              https://images.unsplash.com/photo-1779398970581-72bc4e741c81?auto=format&fit=crop&w=1400&q=75 1400w,
+              https://images.unsplash.com/photo-1779398970581-72bc4e741c81?auto=format&fit=crop&w=2000&q=80 2000w
+            "
+            sizes="100vw"
+            alt="Two models in a grey studio. One wears a black cut-out dress; the other wears a white turtleneck, white gloves, and a long black ribbon."
+            width="2000"
+            height="3000"
+            fetchpriority="high"
+          />
+        </div>
+        <div class="hero__scrim" aria-hidden="true"></div>
+        <div class="hero__content">
+          <p class="hero__kicker">Autumn / Winter 2026</p>
+          <h1>Huilin</h1>
+          <p class="hero__sub">A house of measured lines.</p>
+          <a class="hero__cta" href="#collection">
+            View the collection
+            <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section collection" id="collection" aria-labelledby="collection-title">
+        <div class="wrap">
+          <header class="section-head reveal">
+            <p class="kicker"><span>01</span> Collection</p>
+            <h2 id="collection-title">The new season</h2>
+            <p class="lede">Six pieces. Black, ivory, and the cut between them.</p>
+          </header>
+
+          <div class="collection__grid">
+            <article class="piece-card reveal" style="--d: 0.05s">
+              <button
+                class="piece-card__open"
+                type="button"
+                data-piece
+                data-index="01"
+                data-title="Noir"
+                data-category="Evening gown"
+                data-price="€3,800"
+                data-copy="Floor-length crepe with a single slit. Cut to move, finished by hand in the Paris atelier."
+              >
+                <div class="piece-card__media">
+                  <img
+                    src="https://images.unsplash.com/photo-1589212987511-4a924cb9d8ac?auto=format&fit=crop&w=1200&q=80"
+                    alt="A woman in a long black evening dress with a high slit, standing on a stone staircase among flowering trees."
+                    width="1200"
+                    height="1600"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="piece-card__meta">
+                  <p class="piece-card__index">01</p>
+                  <h3>Noir</h3>
+                  <p class="piece-card__cat">Evening gown</p>
+                  <p class="piece-card__price">€3,800</p>
+                </div>
+              </button>
+            </article>
+
+            <article class="piece-card reveal" style="--d: 0.12s">
+              <button
+                class="piece-card__open"
+                type="button"
+                data-piece
+                data-index="02"
+                data-title="Collier"
+                data-category="Silk dress"
+                data-price="€4,600"
+                data-copy="Black silk, gathered once at the waist and closed with a crystal collar. Worn close to the body."
+              >
+                <div class="piece-card__media piece-card__media--top">
+                  <img
+                    src="https://images.unsplash.com/photo-1741816219933-2bf406bc9739?auto=format&fit=crop&w=1200&q=80"
+                    alt="Close portrait of a model in a black silk dress with a crystal-encrusted collar."
+                    width="1200"
+                    height="1600"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="piece-card__meta">
+                  <p class="piece-card__index">02</p>
+                  <h3>Collier</h3>
+                  <p class="piece-card__cat">Silk dress</p>
+                  <p class="piece-card__price">€4,600</p>
+                </div>
+              </button>
+            </article>
+
+            <article class="piece-card reveal" style="--d: 0.18s">
+              <button
+                class="piece-card__open"
+                type="button"
+                data-piece
+                data-index="03"
+                data-title="Ivory"
+                data-category="Coat and column"
+                data-price="€2,950"
+                data-copy="An undyed wool coat over a column dress in the same ivory. A small black bag is the only contrast."
+              >
+                <div class="piece-card__media">
+                  <img
+                    src="https://images.unsplash.com/photo-1764179690182-79465d8d4161?auto=format&fit=crop&w=1200&q=80"
+                    alt="A woman in an ivory coat and cream column dress, wearing a patterned headscarf and holding a small black handbag."
+                    width="1200"
+                    height="1600"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="piece-card__meta">
+                  <p class="piece-card__index">03</p>
+                  <h3>Ivory</h3>
+                  <p class="piece-card__cat">Coat and column</p>
+                  <p class="piece-card__price">€2,950</p>
+                </div>
+              </button>
+            </article>
+
+            <article class="piece-card reveal" style="--d: 0.08s">
+              <button
+                class="piece-card__open"
+                type="button"
+                data-piece
+                data-index="04"
+                data-title="Windowpane"
+                data-category="Tailoring"
+                data-price="€3,200"
+                data-copy="Three pieces in a quiet windowpane. Jacket, waistcoat, and trouser, cut with a narrow shoulder."
+              >
+                <div class="piece-card__media piece-card__media--suit">
+                  <img
+                    src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=1200&q=80"
+                    alt="A tailored blue windowpane three-piece suit with a striped tie and white pocket square."
+                    width="1200"
+                    height="1600"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="piece-card__meta">
+                  <p class="piece-card__index">04</p>
+                  <h3>Windowpane</h3>
+                  <p class="piece-card__cat">Tailoring</p>
+                  <p class="piece-card__price">€3,200</p>
+                </div>
+              </button>
+            </article>
+
+            <article class="piece-card reveal" style="--d: 0.14s">
+              <button
+                class="piece-card__open"
+                type="button"
+                data-piece
+                data-index="05"
+                data-title="The Line"
+                data-category="Heel"
+                data-price="€920"
+                data-copy="A pointed calf heel in black, with a narrow ankle strap. The line of the shoe is the whole idea."
+              >
+                <div class="piece-card__media piece-card__media--heel">
+                  <img
+                    src="https://images.unsplash.com/photo-1770576568723-c557b096394b?auto=format&fit=crop&w=1200&q=80"
+                    alt="Black pointed heels and opaque tights against a plain light background."
+                    width="1200"
+                    height="1600"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="piece-card__meta">
+                  <p class="piece-card__index">05</p>
+                  <h3>The Line</h3>
+                  <p class="piece-card__cat">Heel</p>
+                  <p class="piece-card__price">€920</p>
+                </div>
+              </button>
+            </article>
+
+            <article class="piece-card reveal" style="--d: 0.2s">
+              <button
+                class="piece-card__open"
+                type="button"
+                data-piece
+                data-index="06"
+                data-title="Sand"
+                data-category="Silk shirt dress"
+                data-price="€780"
+                data-copy="Washed silk, belted at the waist and worn open at the collar. Daylight cloth, for the city."
+              >
+                <div class="piece-card__media piece-card__media--top">
+                  <img
+                    src="https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?auto=format&fit=crop&w=1200&q=80"
+                    alt="A woman in a belted cream silk shirt dress, standing in bright daylight."
+                    width="1200"
+                    height="1600"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="piece-card__meta">
+                  <p class="piece-card__index">06</p>
+                  <h3>Sand</h3>
+                  <p class="piece-card__cat">Silk shirt dress</p>
+                  <p class="piece-card__price">€780</p>
+                </div>
+              </button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="quote" aria-label="House note">
+        <blockquote class="reveal">
+          <p>Nothing louder than the cloth.</p>
+        </blockquote>
+      </section>
+
+      <section class="section maison" id="maison" aria-labelledby="maison-title">
+        <div class="wrap maison__grid">
+          <div class="maison__copy reveal">
+            <p class="kicker"><span>02</span> Maison</p>
+            <h2 id="maison-title">Cut in silence.</h2>
+            <p>
+              Huilin began above a silk merchant in Shanghai, and took its present form in Paris. The house still works slowly. Patterns are cut by hand. A collection is six ideas, not sixty.
+            </p>
+            <p>
+              Black, ivory, and a single note of gold. The cloth is the point. Everything else is kept quiet, so the garment can last longer than the season it arrived in.
+            </p>
+            <a class="text-link" href="#lookbook">Read the lookbook</a>
+          </div>
+          <figure class="maison__figure reveal" style="--d: 0.15s">
+            <div class="maison__media">
+              <img
+                src="https://images.unsplash.com/photo-1613915617430-8ab0fd7c6baf?auto=format&fit=crop&w=1400&q=80"
+                alt="Black-and-white studio portrait of a model in a textured blazer and wide trousers, one hand in a pocket."
+                width="1400"
+                height="1750"
+                loading="lazy"
+              />
+            </div>
+            <figcaption>Atelier study, Paris</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section lookbook" id="lookbook" aria-labelledby="lookbook-title">
+        <div class="wrap">
+          <header class="section-head reveal">
+            <p class="kicker"><span>03</span> Lookbook</p>
+            <h2 id="lookbook-title">Editorial 08</h2>
+            <p class="lede">Photographed between the studio and the street. No set dressing beyond the light.</p>
+          </header>
+
+          <div class="lookbook__grid">
+            <figure class="look look--gown look--lower reveal">
+              <div class="look__media">
+                <img
+                  src="https://images.unsplash.com/photo-1568251188392-ae32f898cb3b?auto=format&fit=crop&w=2000&q=80"
+                  alt="A model in a black tiered couture gown with a long train, standing in a white paneled room."
+                  width="2000"
+                  height="1333"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>08 — The Gown</figcaption>
+            </figure>
+
+            <figure class="look look--lower reveal" style="--d: 0.08s">
+              <div class="look__media">
+                <img
+                  src="https://images.unsplash.com/photo-1743410604703-70a0cf3233bf?auto=format&fit=crop&w=1100&q=80"
+                  alt="A model seated in a white strapless dress and white heels against a seamless white studio."
+                  width="1100"
+                  height="1467"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>Silence</figcaption>
+            </figure>
+
+            <figure class="look reveal" style="--d: 0.14s">
+              <div class="look__media">
+                <img
+                  src="https://images.unsplash.com/photo-1668952135120-7d997b1b3778?auto=format&fit=crop&w=1100&q=80"
+                  alt="Editorial portrait of a model in an oversized camel coat worn off one shoulder, against a pale studio wall."
+                  width="1100"
+                  height="1467"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>Camel</figcaption>
+            </figure>
+
+            <figure class="look reveal" style="--d: 0.2s">
+              <div class="look__media">
+                <img
+                  src="https://images.unsplash.com/photo-1668343979143-2a108fed9ae1?auto=format&fit=crop&w=1100&q=80"
+                  alt="A woman in a black double-breasted coat carrying a white gathered handbag on a city street at dusk."
+                  width="1100"
+                  height="1467"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption>After Dark</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="newsletter" id="newsletter" aria-labelledby="newsletter-title">
+        <div class="wrap newsletter__inner">
+          <div class="reveal">
+            <p class="kicker kicker--on-dark"><span>04</span> Correspondence</p>
+            <h2 id="newsletter-title">Notes, twice a season.</h2>
+            <p class="lede lede--on-dark">
+              Private arrivals, care of cloth, and the occasional invitation. Nothing more frequent, and nothing for sale in the letter.
+            </p>
+          </div>
+          <form class="newsletter__form reveal" id="newsletter-form" novalidate style="--d: 0.12s">
+            <div class="newsletter__row">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                inputmode="email"
+                autocomplete="email"
+                placeholder="name@atelier.com"
+                required
+                spellcheck="false"
+              />
+              <button type="submit">Subscribe</button>
+            </div>
+            <p class="newsletter__error" id="newsletter-error" role="alert" hidden></p>
+          </form>
+          <p class="newsletter__success" id="newsletter-success" role="status" hidden>
+            You are on the list. We write twice a season.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer__grid">
+        <div class="footer__brand">
+          <p class="footer__word">Huilin</p>
+          <p>Paris · Shanghai<br />By appointment</p>
+        </div>
+        <div>
+          <p class="footer__label">Maison</p>
+          <ul>
+            <li><a href="#collection">Collection</a></li>
+            <li><a href="#maison">The house</a></li>
+            <li><a href="#lookbook">Lookbook</a></li>
+            <li><a href="#newsletter">Correspondence</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__label">Care of cloth</p>
+          <p class="footer__note">
+            Steam, never soak the silk. Wool rests on a wide hanger. Leather takes a soft cloth and nothing else.
+          </p>
+        </div>
+      </div>
+      <div class="wrap footer__base">
+        <p>© 2026 Huilin</p>
+        <p>Photography from Unsplash, under the Unsplash License.</p>
+      </div>
+    </footer>
+
+    <dialog class="piece-dialog" id="piece-dialog" aria-labelledby="piece-dialog-title">
+      <div class="piece-dialog__layout">
+        <div class="piece-dialog__media">
+          <img id="piece-dialog-image" alt="" width="900" height="1200" />
+        </div>
+        <div class="piece-dialog__body">
+          <button class="piece-dialog__close" type="button" data-close>Close</button>
+          <p class="piece-dialog__index" id="piece-dialog-index"></p>
+          <h2 id="piece-dialog-title"></h2>
+          <p class="piece-dialog__cat" id="piece-dialog-cat"></p>
+          <p class="piece-dialog__copy" id="piece-dialog-copy"></p>
+          <p class="piece-dialog__price" id="piece-dialog-price"></p>
+          <p class="piece-dialog__note">Available by appointment at the atelier.</p>
+          <a class="text-link" href="#newsletter" data-enquire>Enquire</a>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
