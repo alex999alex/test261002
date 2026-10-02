@@ -270,9 +270,8 @@ button {
 
 .js .nav.is-solid,
 .js .nav.is-open {
-  background: rgba(243, 238, 230, 0.94);
+  background: var(--cream);
   color: var(--ink);
-  backdrop-filter: blur(16px);
 }
 
 .js .nav__toggle {
@@ -287,8 +286,8 @@ button {
   flex-wrap: nowrap;
   justify-content: center;
   gap: 1.35rem;
-  padding: 2rem;
-  background: var(--cream);
+  padding: 2.5rem;
+  background: #f3eee6;
   color: var(--ink);
   visibility: hidden;
   opacity: 0;
@@ -621,9 +620,6 @@ button {
 
 .maison__figure figcaption,
 .look figcaption {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
   margin-top: 0.75rem;
   color: var(--ink-soft);
   font-size: 0.72rem;
@@ -653,8 +649,12 @@ button {
 }
 
 .look__media img {
-  object-position: center 30%;
+  object-position: center 12%;
   transition: transform 1.6s var(--ease);
+}
+
+.look--lower img {
+  object-position: center 42%;
 }
 
 .look:hover img {
@@ -921,7 +921,7 @@ button {
   }
 
   .look--gown .look__media {
-    aspect-ratio: 16 / 8;
+    aspect-ratio: 16 / 9;
   }
 }
 
