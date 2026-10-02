@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chess</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560&family=Outfit:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="top">
+        <div>
+          <p class="eyebrow">Two players, one device</p>
+          <h1>Chess</h1>
+        </div>
+        <button id="new-game" type="button">New game</button>
+      </header>
+      <p id="status" class="status" role="status" aria-live="polite">White to move</p>
+      <div class="stage">
+        <div class="frame">
+          <div class="board-wrap">
+            <div id="board" class="board" role="grid" aria-label="Chessboard"></div>
+            <div id="promo" class="promo" role="dialog" aria-label="Choose promotion piece" hidden></div>
+          </div>
+        </div>
+        <aside class="panel">
+          <section>
+            <h2>Captured</h2>
+            <div class="captures">
+              <p>White took <span id="cap-w"></span></p>
+              <p>Black took <span id="cap-b"></span></p>
+            </div>
+          </section>
+          <section>
+            <h2>Score sheet</h2>
+            <ol id="moves" class="moves"></ol>
+          </section>
+          <p id="hint" class="hint"></p>
+        </aside>
+      </div>
+    </main>
+    <p id="toast" class="toast" role="alert" hidden></p>
+    <script type="module" src="js/ui.js"></script>
+  </body>
+</html>
