@@ -1,3 +1,4 @@
+import { chooseMove } from "./ai.js";
 import { algebraic, analyze, applyMove, createGame, toSAN } from "./chess.js";
 
 const PIECE_FILE = {
@@ -33,7 +34,12 @@ const movesEl = document.querySelector("#moves");
 const promoEl = document.querySelector("#promo");
 const toastEl = document.querySelector("#toast");
 const hintEl = document.querySelector("#hint");
+const eyebrowEl = document.querySelector("#eyebrow");
 const newGameBtn = document.querySelector("#new-game");
+const modeButtons = {
+  computer: document.querySelector("#mode-computer"),
+  hotseat: document.querySelector("#mode-hotseat"),
+};
 const capturedEls = {
   w: document.querySelector("#cap-w"),
   b: document.querySelector("#cap-b"),
@@ -41,6 +47,9 @@ const capturedEls = {
 
 let state = createGame();
 let view = analyze(state);
+let mode = "computer";
+let thinking = false;
+let thinkTimer = 0;
 let selected = null;
 let lastMove = null;
 let history = [];
@@ -157,6 +166,24 @@ function commit(move) {
   selected = null;
   drag = null;
   paint();
+  queueComputer();
+}
+
+function queueComputer() {
+  if (mode !== "computer" || state.turn !== "b") return;
+  if (view.status === "checkmate" || view.status === "stalemate") return;
+  thinking = true;
+  paint();
+  window.clearTimeout(thinkTimer);
+  thinkTimer = window.setTimeout(() => {
+    const move = chooseMove(state);
+    thinking = false;
+    if (!move) {
+      paint();
+      return;
+    }
+    commit(move);
+  }, 420);
 }
 
 function movesTo(from, to) {
@@ -182,10 +209,24 @@ function tryMove(from, to) {
 function statusCopy() {
   const side = state.turn === "w" ? "White" : "Black";
   if (view.status === "checkmate") {
+    if (mode === "computer") {
+      const youWin = state.turn === "b";
+      return { text: youWin ? "Checkmate — you win" : "Checkmate — computer wins", dot: youWin ? "w" : "b" };
+    }
     const winner = state.turn === "w" ? "Black" : "White";
     return { text: `Checkmate — ${winner} wins`, dot: state.turn === "w" ? "b" : "w" };
   }
   if (view.status === "stalemate") return { text: "Stalemate — draw", dot: null };
+  if (mode === "computer") {
+    if (thinking || state.turn === "b") {
+      return {
+        text: view.status === "check" ? "Computer is in check" : "Computer is thinking",
+        dot: "b",
+      };
+    }
+    if (view.status === "check") return { text: "You are in check", dot: "w" };
+    return { text: "Your turn", dot: "w" };
+  }
   if (view.status === "check") return { text: `${side} is in check`, dot: state.turn };
   return { text: `${side} to move`, dot: state.turn };
 }
@@ -231,7 +272,8 @@ function paint() {
   }
 
   const copy = statusCopy();
-  statusEl.className = `status ${view.status}`;
+  statusEl.className = `status ${view.status}${thinking ? " thinking" : ""}`;
+  boardEl.classList.toggle("locked", thinking);
   statusEl.replaceChildren();
   if (copy.dot) {
     const dot = document.createElement("i");
@@ -242,9 +284,13 @@ function paint() {
   statusEl.append(copy.text);
 
   const over = view.status === "checkmate" || view.status === "stalemate";
-  hintEl.textContent = over
-    ? "Start a new game to play again."
-    : "Click a piece, then a highlighted square. You can also drag.";
+  if (over) hintEl.textContent = "Start a new game to play again.";
+  else if (mode === "computer") {
+    hintEl.textContent = "You play White. Click or drag a piece. The computer plays Black.";
+  } else {
+    hintEl.textContent = "Click a piece, then a highlighted square. You can also drag.";
+  }
+  eyebrowEl.textContent = mode === "computer" ? "You play White" : "Two players, one device";
 
   paintCaptures();
   paintHistory();
@@ -297,6 +343,8 @@ function paintHistory() {
 }
 
 function resetGame() {
+  window.clearTimeout(thinkTimer);
+  thinking = false;
   closePromo();
   drag?.ghost?.remove();
   drag = null;
@@ -307,6 +355,17 @@ function resetGame() {
   captures = { w: [], b: [] };
   toastEl.hidden = true;
   paint();
+}
+
+function setMode(next) {
+  if (next === mode) return;
+  mode = next;
+  for (const [name, button] of Object.entries(modeButtons)) {
+    const on = name === mode;
+    button.classList.toggle("is-on", on);
+    button.setAttribute("aria-pressed", on ? "true" : "false");
+  }
+  resetGame();
 }
 
 function placeGhost(piece, size, x, y) {
@@ -350,7 +409,8 @@ function endDrag(event) {
 boardEl.addEventListener("pointerdown", (event) => {
   if (event.button !== 0) return;
   const squareEl = event.target.closest("[data-sq]");
-  if (!squareEl || promoMoves) return;
+  if (!squareEl || promoMoves || thinking) return;
+  if (mode === "computer" && state.turn !== "w") return;
   if (view.status === "checkmate" || view.status === "stalemate") return;
   const sq = Number(squareEl.dataset.sq);
   const piece = state.board[sq];
@@ -408,6 +468,8 @@ document.addEventListener("pointerdown", (event) => {
 });
 
 newGameBtn.addEventListener("click", resetGame);
+modeButtons.computer.addEventListener("click", () => setMode("computer"));
+modeButtons.hotseat.addEventListener("click", () => setMode("hotseat"));
 boardEl.addEventListener("contextmenu", (event) => event.preventDefault());
 
 buildBoard();

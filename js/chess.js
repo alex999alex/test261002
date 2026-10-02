@@ -165,6 +165,10 @@ function kingInCheck(board, color) {
   return isAttacked(board, kingSq, opponent(color));
 }
 
+export function sideInCheck(state) {
+  return kingInCheck(state.board, state.turn);
+}
+
 function pushMove(moves, from, to, captured, extra = {}) {
   moves.push({
     from,

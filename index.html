@@ -20,7 +20,7 @@
     <main class="app">
       <header class="top">
         <div>
-          <p class="eyebrow">Two players, one device</p>
+          <p class="eyebrow" id="eyebrow">You play White</p>
           <h1>Chess</h1>
         </div>
         <button id="new-game" type="button">New game</button>
@@ -34,6 +34,10 @@
           </div>
         </div>
         <aside class="panel">
+          <div class="modes" role="group" aria-label="Who plays Black">
+            <button id="mode-computer" class="mode is-on" type="button" aria-pressed="true">Vs computer</button>
+            <button id="mode-hotseat" class="mode" type="button" aria-pressed="false">Two players</button>
+          </div>
           <section>
             <h2>Captured</h2>
             <div class="captures">

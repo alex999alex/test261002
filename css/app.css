@@ -87,7 +87,7 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   gap: 0.65rem;
-  width: min(92vw, 560px);
+  width: min(calc(100vw - 72px), 560px);
   min-height: 52px;
   margin: 0 auto 18px;
   padding: 0.4rem 1rem;
@@ -104,6 +104,7 @@ button:focus-visible {
 }
 
 .status.stalemate { color: #e4d8c4; }
+.status.thinking { color: #f0e2c4; }
 
 .dot {
   width: 0.9rem;
@@ -137,24 +138,31 @@ button:focus-visible {
 }
 
 .board {
+  --board-size: min(calc(100vw - 72px), 560px);
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  width: min(92vw, 560px);
-  aspect-ratio: 1;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+  width: var(--board-size);
+  height: var(--board-size);
   overflow: hidden;
   border-radius: 6px;
   touch-action: none;
   user-select: none;
 }
 
+.board.locked { cursor: wait; }
+
 .square {
   position: relative;
-  display: grid;
-  place-items: center;
+  min-width: 0;
+  min-height: 0;
   border: 0;
   padding: 0;
+  appearance: none;
   background: var(--light);
   cursor: pointer;
+  line-height: 0;
+  font-size: 0;
 }
 
 .square.dark { background: var(--dark); }
@@ -185,12 +193,9 @@ button:focus-visible {
 .square.check .coord { color: #fff6f2; }
 
 .piece {
-  position: relative;
+  position: absolute;
   z-index: 1;
-  display: grid;
-  width: 92%;
-  height: 92%;
-  place-items: center;
+  inset: 4%;
 }
 
 .piece img,
@@ -200,6 +205,7 @@ button:focus-visible {
   display: block;
   width: 100%;
   height: 100%;
+  object-fit: contain;
   pointer-events: none;
   user-select: none;
 }
@@ -332,6 +338,29 @@ button:focus-visible {
   display: block;
   color: var(--muted);
   border-bottom: 0;
+}
+
+.modes {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 18px;
+}
+
+.mode {
+  border: 1px solid rgba(243, 239, 230, 0.16);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.mode.is-on {
+  border-color: rgba(212, 180, 131, 0.8);
+  background: rgba(212, 180, 131, 0.14);
+  color: var(--paper);
 }
 
 .hint {
